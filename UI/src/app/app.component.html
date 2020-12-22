@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="navbar">
+  <a routerLink="/home" class="with-icon">
+    <mat-icon>home</mat-icon>Micro Blog
+  </a>
+  <div>
+    <a routerLink="/login" mat-stroked-button color="accent" class="with-icon" style="margin-right: 20px">
+      <mat-icon>login</mat-icon>Login
+    </a>
+    <a routerLink="/logout" mat-stroked-button color="accent" class="with-icon" style="margin-right: 20px">
+      <mat-icon>logout</mat-icon>Logout
+    </a>
+    <a routerLink="/posts" mat-raised-button color="accent" class="with-icon">
+      <mat-icon>add</mat-icon>Write Post
+    </a>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

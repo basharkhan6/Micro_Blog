@@ -1,0 +1,38 @@
+<div style="padding: 10px">
+  <div fxLayout="row wrap" fxLayoutGap="grid">
+    <div fxFlex="25%" fxFlex.md="50%" fxFlex.sm="100%" *ngFor="let num of [1,2,3,4,5,6,7, 8]">
+      <mat-card style="margin: 10px;">
+        <mat-card-header>
+          <mat-card-title>Mountains {{num}} </mat-card-title>
+        </mat-card-header>
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        <mat-card-content>
+<!--          <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">-->
+<!--            <span class="mat-subheader with-icon"><mat-icon>query_builder</mat-icon>12:12 PM</span>-->
+<!--            <span class="mat-subheader with-icon"><mat-icon>person</mat-icon>Abul Basar</span>-->
+<!--          </div>-->
+<!--          <hr>-->
+          <p>
+            The Himalayas is a mountain range in Asia.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a routerLink="/posts/{{num}}" mat-raised-button color="accent">Read More<mat-icon>arrow_right</mat-icon></a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = $event">
+</mat-paginator>
+
+<div *ngIf="pageEvent">
+  <h5>Page Change Event Properties</h5>
+  <div>List length: {{pageEvent.length}}</div>
+  <div>Page size: {{pageEvent.pageSize}}</div>
+  <div>Page index: {{pageEvent.pageIndex}}</div>
+</div>
