@@ -1,15 +1,18 @@
-<div style="padding: 10px">
-  <mat-card style="margin: 10px; color: black; background-color: white">
+<div style="padding: 15px">
+  <mat-card *ngIf="post" style="margin: 10px; color: black; background-color: white">
     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" style="max-height: 500px">
-    <mat-card-content>
+    <mat-card-content style="font-size: 1rem;">
       <div style="display: flex; flex-wrap: wrap; justify-content: center">
-        <div class="mat-subheader with-icon"><mat-icon>query_builder</mat-icon>12:12 PM</div>
+        <div class="mat-subheader">
+          <mat-icon class="material-icons">query_builder</mat-icon><span class="icon-text">{{post.createdAt | date:'longDate'}}</span>
+        </div>
         <div class="break"></div>
-        <div class="mat-display-2" style="margin: 20px 0px">Bla Bla</div>
+        <div class="mat-display-2" style="margin: 20px 0px">{{post.title}}</div>
         <div class="break"></div>
-        <div class="mat-headline with-icon"><mat-icon>person</mat-icon>Abul Basar</div>
+        <div class="mat-headline material-icons"><mat-icon>person</mat-icon><span class="icon-text">{{post.author.name}}</span></div>
       </div>
       <hr>
+      {{post.description}}
       <p>
         The Himalayas is a mountain range in Asia.
       </p>
@@ -28,8 +31,42 @@
     </mat-card-content>
     <hr>
     <mat-card-actions>
-      <button mat-raised-button color="accent"><mat-icon>arrow_upward</mat-icon>Useful</button>
-      <button mat-raised-button><mat-icon>arrow_downward</mat-icon>Not Useful</button>
+      <button (click)="upVote()" mat-raised-button><mat-icon>arrow_upward</mat-icon>{{post.upVote}}</button>
+      <button (click)="downVote()" mat-raised-button><mat-icon>arrow_downward</mat-icon>{{post.downVote}}</button>
     </mat-card-actions>
+  </mat-card>
+</div>
+
+<div style="padding: 10% 20%">
+  <mat-card *ngIf="loginNeeded">
+    <mat-card-content>
+      <p><b>Only logged user can comment</b></p>
+      <button (click)="redirectToLogin()" mat-stroked-button color="primary">
+        <mat-icon>login</mat-icon><span class="icon-text">Login</span>
+      </button>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngIf="!loginNeeded">
+    <mat-card-content>
+      <mat-form-field class="full-width" style="width: 90%">
+        <input #text name="text" type="text" matInput placeholder="Write a comment">
+      </mat-form-field>
+      <button (click)="makeComment(text.value)" type="submit" mat-raised-button color="primary" class="center" fxLayoutAlign="center">
+        <mat-icon>login</mat-icon><span class="icon-text">Comment</span>
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngFor="let comment of comments" style="margin-top: 5%">
+    <mat-card-header>
+      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308460-stock-illustration-unknown-person-silhouette-profile-picture.jpg" alt="" width="40px">
+      <h3>{{comment.commenter.name}}</h3>
+    </mat-card-header>
+    <hr>
+    <mat-card-content>
+      <p>{{comment.text}}</p>
+      <br>
+      <h4>{{comment.commentedAt | date: 'medium'}}</h4>
+    </mat-card-content>
   </mat-card>
 </div>

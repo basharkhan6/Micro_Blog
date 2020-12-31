@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUser(String email) {
-        return userRepository.findUserByEmail(email)
+        return userRepository.findByEmailIgnoreCase(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 

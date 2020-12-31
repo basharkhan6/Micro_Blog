@@ -1,16 +1,18 @@
 <mat-card style="width: 400px; margin: 20px auto">
   <mat-card-content>
     <h1 class="center">Create New Post</h1>
-    <form class="example-form">
+    <form (submit)="savePost()" class="example-form">
       <mat-form-field class="full-width">
         <mat-label>Title</mat-label>
-        <input type="text" matInput placeholder="Ex. pat@example.com">
+        <input [(ngModel)]="post.title" name="title" type="text" matInput placeholder="Ex. pat@example.com">
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Description</mat-label>
-        <textarea matInput rows="5" placeholder="Write your complete post..."></textarea>
+        <textarea [(ngModel)]="post.description" name="description" matInput rows="5" placeholder="Write your complete post..."></textarea>
       </mat-form-field>
-      <button mat-raised-button color="accent" class="center" fxLayoutAlign="center">Submit</button>
+      <button type="submit" mat-raised-button color="accent" class="center" fxLayoutAlign="center">
+        <mat-icon>save</mat-icon><span class="icon-text">Submit</span>
+      </button>
     </form>
   </mat-card-content>
 </mat-card>

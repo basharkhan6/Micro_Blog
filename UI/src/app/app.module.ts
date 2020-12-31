@@ -1,23 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
-import { HomepageComponent } from './homepage/homepage.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 import {RouterModule, Routes} from '@angular/router';
-import { PostComponent } from './post/post.component';
-import { PostViewComponent } from './post-view/post-view.component';
+import { PostComponent } from './pages/post/post.component';
+import { PostViewComponent } from './pages/post-view/post-view.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
+import { LoginComponent } from './pages/login/login.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {XhrInterceptor} from './service/xhr-interceptor.service';
 
 const routes: Routes = [
   {path: 'home', component: HomepageComponent},
   {path: 'posts', component: PostComponent},
   {path: 'posts/:id', component: PostViewComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
@@ -28,7 +28,6 @@ const routes: Routes = [
     PostComponent,
     PostViewComponent,
     LoginComponent,
-    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +35,10 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,18 @@
+<mat-card style="width: 400px; margin: 20px auto">
+  <mat-card-content>
+    <h1 class="center">Login</h1>
+    <form (submit)="login()" role="form" class="example-form">
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="credentials.username" name="username" type="email" matInput placeholder="Ex. pat@example.com">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="credentials.password" name="password" type="password" matInput placeholder="dyv%3gvs_!ns">
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="accent" class="center" fxLayoutAlign="center">
+        <mat-icon>login</mat-icon><span class="icon-text">Login</span>
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

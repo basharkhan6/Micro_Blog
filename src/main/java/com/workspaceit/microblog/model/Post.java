@@ -18,13 +18,23 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    private int upVote;
+
+    private int downVote;
+
     private LocalDateTime createdAt;
 
-    @NotNull(message = "There must be a author of a post")
     @ManyToOne
     private User author;
 
     public Post() {
+    }
+
+    public Post(@NotEmpty(message = "Post title can not be empty") String title, String description, LocalDateTime createdAt, @NotNull(message = "There must be a author of a post") User author) {
+        this.title = title;
+        this.description = description;
+        this.createdAt = createdAt;
+        this.author = author;
     }
 
     public int getId() {
@@ -65,5 +75,21 @@ public class Post {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public int getUpVote() {
+        return upVote;
+    }
+
+    public void setUpVote(int upVote) {
+        this.upVote = upVote;
+    }
+
+    public int getDownVote() {
+        return downVote;
+    }
+
+    public void setDownVote(int downVote) {
+        this.downVote = downVote;
     }
 }

@@ -1,22 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-p {
-  font-size: 1rem;
-}
-.navbar {
-  justify-content: space-between;
-}
-.navbar a {
+a {
   color: white;
   text-decoration: none;
 }
+p {
+  font-size: 1rem;
+}
 
-.with-icon {
-  display: flex;
-  align-items: center;
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.icon-text {
+  font-size: 20px;
+  line-height:18px;
+}
+.material-icons{
+  display: inline-flex;
+  vertical-align: top;
 }
 
 /* Inserting this collapsed row between two flex items will make

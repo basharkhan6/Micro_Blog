@@ -7,6 +7,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 const material = [
   MatButtonModule,
@@ -16,7 +18,9 @@ const material = [
   MatIconModule,
   FlexLayoutModule,
   MatInputModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSidenavModule,
+  MatListModule
 ];
 
 @NgModule({
