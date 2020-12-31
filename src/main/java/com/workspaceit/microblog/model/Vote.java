@@ -16,11 +16,9 @@ public class Vote {
     private VoteType type;
 
     @ManyToOne
-    @JsonIgnore
     private Post post;
 
     @ManyToOne
-    @JsonIgnore
     private User voter;
 
     public Vote() {

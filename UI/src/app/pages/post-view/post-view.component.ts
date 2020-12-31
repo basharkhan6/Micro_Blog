@@ -79,7 +79,7 @@ export class PostViewComponent implements OnInit {
   upVote(): void {
     this.voteService.changeVote(this.postId, VoteType.UPVOTE).subscribe(
       () => {
-        this.post.upVote++;
+        this.getPost();
       },
       error => {
         console.log('Cannot change vote: Upvote');
@@ -88,6 +88,9 @@ export class PostViewComponent implements OnInit {
             this.redirectToLogin();
           }
         }
+        if (error.status === 400) {
+          alert('Already given.');
+        }
       }
     );
   }
@@ -95,7 +98,7 @@ export class PostViewComponent implements OnInit {
   downVote(): void {
     this.voteService.changeVote(this.postId, VoteType.DOWNVOTE).subscribe(
       () => {
-        this.post.downVote++;
+        this.getPost();
       },
       error => {
         console.log('Cannot change vote: Downvote');
@@ -103,6 +106,9 @@ export class PostViewComponent implements OnInit {
           if (confirm('Login required\r\nWant to login?')) {
             this.redirectToLogin();
           }
+        }
+        if (error.status === 400) {
+          alert('Already given.');
         }
       }
     );
