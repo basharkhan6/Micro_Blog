@@ -4,7 +4,7 @@
 [![Angular](https://img.shields.io/badge/angular%20-%23DD0031.svg?&style=for-the-badge&logo=angular&logoColor=white)](https://angular.io)
 
 # Micro_Blog
-A small microblogging platform with REST and Basic Security where users can post and interact (upvote, downvote, comment) with posts from other users.
+A small micro-blogging platform with REST and Basic Security where users can post and interact (upvote, downvote, comment) with posts from other users.
 
 ### Functional Requirements
 1. Users can create new posts.
